@@ -1,0 +1,23 @@
+□使用パッケージ
+    python
+    slack_sdk
+        作業完了時にSlackにメッセージを送るために使用しています。
+    vgg16
+        類似画像検索を行うCNNモデル
+    PyTorch
+        機械学習用のライブラリ
+
+□各ファイル
+    - /wixoss_identification
+        VGG16を使用した類似画像検索を行うスクリプトです。
+
+        - /wixoss_identification/main_learning.py
+            vgg16にカードの画像データを学習させるスクリプトです。
+            初回用で、vgg16を新たなに取得して学習を行います。
+
+        - /wixoss_identification/main_re_learning.py
+            vgg16にカードの画像データを学習させるスクリプトです。
+            既存のモデルに追加で学習を行います。
+
+        - /wixoss_identification/main_search.py
+            学習したモデルを使用して類似画像検索を行います。

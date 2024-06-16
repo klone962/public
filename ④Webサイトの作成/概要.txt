@@ -1,0 +1,78 @@
+□使用パッケージ
+    node.js
+    next.js（typescript / App Router） 
+        Reactベースのフロントエンドフレームワーク
+    daisyui
+        Tailwind CSSを使用したコンポネートライブラリ
+    mongodb
+        DBにはMongoDBのクラウド版 MongoDB Atlasを使用しています。
+
+□動作サイト（vercelでデプロイしています）
+    https://wixoss-search.vercel.app
+
+□各ファイル
+    - wixoss_search\src\app
+        実際に表示されるWebページのpage.tsxファイルが格納されています。
+
+        - app\page.tsx
+            topページ
+            条件を指定してカードを検索できます。
+
+            Webサイト上でのURL：https://wixoss-search.vercel.app
+
+        - app\layout.tsx
+            全ページに表示されているヘッダーとフッダーについての定義が記載されています。
+
+        - app\about\page.tsx
+            サイトマップページ
+            サイトについての説明が記載されています。
+            フッターのサイトについてからリンクするようになっています。
+
+            Webサイト上でのURL：https://wixoss-search.vercel.app/about
+        
+        - app\booster\page.tsx , app\deck\page.tsx , app\lrig\page.tsx
+            Topページ用の条件検索の各ページです。
+            基本的なページ構成は全て同じで、app\page.tsxから各ページに遷移する際のURLクエリパラメータを使用して表示情報を変更しています。
+            
+            Webサイト上でのURL
+                booster:https://wixoss-search.vercel.app/booster
+                deck:https://wixoss-search.vercel.app/deck
+                lrig:https://wixoss-search.vercel.app/lrig
+        
+        - app\search\page.tsx
+            検索用ページ
+            URLクエリパラメータを使用してApiからデータを取得して、カードの情報を表示させています。
+
+            Webサイト上でのURL：https://wixoss-search.vercel.app/search
+
+            - app\search\[item]\page.tsx
+                カード情報表示ページ
+                next.jsのダイナミックルーティングを使用して表示させています。
+                ダイナミックルーティングを使用しているので一つのファイルで全カードの情報ページへルーティングさせることが可能です。
+                
+                URLにはカードIDを使用しているので、その値を使用してApiからカードの情報を取得して表示させています。
+
+        - api\route.ts
+            app\search\page.tsxで使用しているApiです。
+            検索を行うカードの情報をURLクエリパラメータでApiに渡し、json形式で返しています。
+
+            - api\item\route.ts
+                app\search\[item]\page.tsxで使用しているApiです。
+                カードIDをApiに渡し、json形式で返しています。
+        
+            - api\url\route.ts
+                app\search\[item]\page.tsxで使用しているApiです。
+                Apiが呼び出されたらURLを渡す仕様になっています。
+                拡張を視野にApi形式にしています。
+
+    - wixoss_search\src\components
+        各ページで使用しているコンポネートが格納されています。
+
+    - wixoss_search\src\data
+        app\page.tsxで絞り込み検索を行う際の各条件についてのデータが格納されています。
+
+    - wixoss_search\src\scripts
+        URLからパンくずリストを生成するスクリプトです。
+
+    - wixoss_search\src\types
+        型を定義するためのファイルが格納されています。

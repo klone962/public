@@ -1,0 +1,19 @@
+□使用パッケージ
+    python
+    selenium
+        MicrosoftEdgeをプログラムから操作するために使用しています。
+    slack_sdk
+        作業完了時にSlackにメッセージを送るために使用しています。
+
+□各ファイル
+    - /wixoss_get_bigweb
+        bigwebからウィクロスのカード価格を取得するスクリプトです。
+
+        seleniumでMicrosoftEdge操作して、Webページを開きhtmlを取得します。
+        そのhtmlを解析し、カードの価格を取得します。
+        
+    - /wixoss_get_matadata
+        公式サイトから各カードのデータを取得するスクリプトです。
+
+        seleniumでMicrosoftEdge操作して、Webページを開きhtmlを取得します。
+        そのhtmlを解析し、各カードのデータを取得します。
